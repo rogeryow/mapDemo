@@ -1,0 +1,39 @@
+[
+	{
+		"barangay": "kapatagan",
+		"statistics": {
+			"red": 1110,
+			"yellow": 200,
+			"green": 22250,
+			"blue": 60 
+		}
+	},
+
+	{
+		"barangay": "igpit",
+		"statistics": {
+			"red": 1500,
+			"yellow": 290,
+			"green": 10,
+			"blue": 50 
+		}
+	},
+	{
+		"barangay": "goma",
+		"statistics": {
+			"red": 60,
+			"yellow": 220,
+			"green": 1000,
+			"blue": 590 
+		}
+	},
+	{
+		"barangay": "zone 3",
+		"statistics": {
+			"red": 602,
+			"yellow": 2220,
+			"green": 10,
+			"blue": 54390 
+		}
+	}
+]

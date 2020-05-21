@@ -1,0 +1,66 @@
+@font-face {
+	src: url(fonts/SourceSansPro.ttf);
+	font-family: sansPro;
+}
+
+body {
+	font-family: sansPro;
+	padding: 0;
+	margin: 0;
+}
+
+#map-root {
+	background-color: skyblue;
+	width: 100%;
+	height: 100vh;
+	overflow: scroll;
+}
+
+#map {
+	padding: 20px;
+	position: relative;	
+	top: 0px;
+	left: 0px;
+}
+
+#map-sidebar {
+	float: left;
+	background-color: #fff;
+	width: 25%;
+	height: 100%;
+}
+
+#map-content {
+	width: 75%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+}
+
+#map-davao {
+	height: 600px;	
+}
+
+.hover {
+	background-color: #FF9800;
+}
+
+path {
+	cursor: pointer;
+}
+
+.stat-box {
+	z-index: 2;
+	background-color: #fff;
+	position: absolute;
+	padding: 10px;
+	width: 150px;
+}
+
+.filter-box {
+	z-index: 2;
+	position: absolute;
+	background-color: #fff;
+	padding: 10px;
+	top: 180px;
+}

@@ -1,0 +1,72 @@
+[
+	{
+		"barangay": "kapatagan",
+		"statistics": {
+			"red": 10000,
+			"yellow": 22000,
+			"green": 222050,
+			"blue": 21401				
+		},
+		"puroks": [
+			{
+				"name": "Balili",
+				"members": 7000,
+				"non-members": 300,
+				"statistics": {
+					"red": 4110,
+					"yellow": 2200,
+					"green": 22250,
+					"blue": 2141 
+				}
+				
+			},
+			{
+				"name": "suso",
+				"members": 2451,
+				"non-members": 3021,
+				"statistics": {
+					"red": 3210,
+					"yellow": 5400,
+					"green": 6012,
+					"blue": 4020 
+				}
+				
+			}
+		]
+	},
+	{
+		"barangay": "aplaya",
+		"statistics": {
+			"red": 30000,
+			"yellow": 12000,
+			"green": 22340,
+			"blue": 14401				
+		},
+		"puroks": [
+			{
+				"name": "butadon",
+				"members": 5630,
+				"non-members": 2010,
+				"statistics": {
+					"red": 1110,
+					"yellow": 2315,
+					"green": 2250,
+					"blue": 4124 
+				}
+				
+			},
+			{
+				"name": "malinas",
+				"members": 1230,
+				"non-members": 30231,
+				"statistics": {
+					"red": 3075,
+					"yellow": 5347,
+					"green": 6347,
+					"blue": 4375 
+				}
+				
+			}
+		]
+	}
+]
