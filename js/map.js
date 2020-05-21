@@ -65,6 +65,7 @@ function startMap() {
 		addMapZoom()
 
 		function setMapAttribute(barangays) {
+			// imcomplete
 			barangays.forEach(({barangay, statistics}) => {
 				if(barangayList.includes(barangay)) {
 					let barangayNode = document.querySelector(`[data-name='${barangay}']`)
@@ -111,11 +112,24 @@ function startMap() {
 			map.addEventListener('click', function({target}) {
 				const barangay = target.getAttribute('data-name')
 				displayPuroks(barangay)
+
 			})	
 		}
 		
-		function displayPuroks(barangay) {
-			console.log(barangay)
+		function displayPuroks(barangayName) {
+			const barangayIndex = barangays.findIndex(({barangay}) => {
+				return barangay == barangayName
+			})
+			if(barangayIndex > -1) {
+				let sample = ''
+				const {barangay, puroks, statistics} = barangays[barangayIndex]
+				for (const [index, purok] of puroks.entries()) {
+					console.log(purok.name)
+					sample += `<li>${purok.name}</li>`
+				}
+
+				document.getElementById('purok-list').innerHTML = sample
+			}
 		}
 
 		function addMapHoverOver() {
