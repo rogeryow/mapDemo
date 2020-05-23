@@ -22,8 +22,8 @@ function zoom(event) {
 	event.preventDefault()
 
 	let scale = returnOnlyNumbers(this.style.transform) || 1
-	scale += (event.deltaY/4.5) * -0.01
-	scale = Math.min(Math.max(1, scale), 4)
+	scale += (event.deltaY/3.5) * -0.01
+	scale = Math.min(Math.max(0.5, scale), 4)
 	this.style.transform = `scale(${scale})`
 }
 

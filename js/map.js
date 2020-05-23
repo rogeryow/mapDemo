@@ -13,49 +13,10 @@ function startMap() {
 	const mapRoot = document.getElementById('map-root')
 	const mapContainer = document.getElementById('map')
 	const map = document.getElementById('map-davao')
-	const states = document.querySelectorAll('path') 
-
-	const stats = [{
-		total: {
-			red: 0,
-			yellow: 0,
-			green: 0,
-			blue: 0,
-		} 
-	}]
-
-	let barangayList = [
-		'kapatagan',
-		'dulangan',
-		'soong',
-		'balabag',
-		'goma',
-		'binaton',
-		'ruparan',
-		'kiagot',
-		'sinawilan',
-		'tres de mayo',
-		'san agustin',
-		'mahayahay',
-		'lungag',
-		'san roque',
-		'matti',
-		'zone 1',
-		'zone 2',
-		'zone 3',
-		'cogon',
-		'aplaya',
-		'san miguel',
-		'san jose',
-		'dawis',
-		'tiguman',
-		'colorado',
-		'igpit',
-	]
 
 	util.XMLRequest('../data/json/digos.json')
 	.then((barangays) => {
-		setMapAttribute(barangays)
+		// setMapAttribute(barangays)
 		setMapColor(barangays)
 		addMapClick()
 		addMapHoverOver()
@@ -63,29 +24,28 @@ function startMap() {
 		addMapColorfilter()
 		addMapKeyEvents()
 		addMapZoom()
-
-		function setMapAttribute(barangays) {
-			// imcomplete
-			barangays.forEach(({barangay, statistics}) => {
-				if(barangayList.includes(barangay)) {
-					let barangayNode = document.querySelector(`[data-name='${barangay}']`)
-
-					for (let key in statistics) {
-						if (statistics.hasOwnProperty(key)) {
-							barangayNode.setAttribute(key, statistics[key])
-						}
-					}
-				}
-			})
-		}
 		
-		function setMapColor(barangays, option = {red: true, yellow: true, green: true, blue: true}) {
+		function setMapColor(barangays, option) {
+			option = Object.assign(
+				{
+					red: true, 
+					yellow: true, 
+					green: true, 
+					blue: true,
+					filter: 'total',
+				},
+				option
+			)
+
+			const {red, yellow, green, blue, filter} = option
+
 			for (const [index, {barangay, statistics}] of barangays.entries()) {
+
 				const filteredStat = {}
-				if(option.red) filteredStat.red = statistics.red
-				if(option.yellow) filteredStat.yellow = statistics.yellow
-				if(option.green) filteredStat.green = statistics.green
-				if(option.blue) filteredStat.blue = statistics.blue
+				if(red) filteredStat.red = statistics[filter].red
+				if(yellow) filteredStat.yellow = statistics[filter].yellow
+				if(green) filteredStat.green = statistics[filter].green
+				if(blue) filteredStat.blue = statistics[filter].blue
 
 				const getBarangayMaxStat = Object.keys(filteredStat).reduce((now, current) => filteredStat[now] > filteredStat[current] ? now : current )
 				fillColor(barangay, getBarangayMaxStat)
@@ -109,63 +69,71 @@ function startMap() {
 		}
 
 		function addMapClick() {
-			map.addEventListener('click', function({target}) {
-				const barangay = target.getAttribute('data-name')
-				displayPuroks(barangay)
-
+			map.addEventListener('click', function({target: barangayNode}) {
+				console.log(barangayNode)
+				const barangay = barangayNode.getAttribute('data-name') || undefined
+				if(barangay) displayPuroks(getBarangayInfo(barangay))
 			})	
-		}
-		
-		function displayPuroks(barangayName) {
-			const barangayIndex = barangays.findIndex(({barangay}) => {
-				return barangay == barangayName
-			})
-			if(barangayIndex > -1) {
-				let sample = ''
-				const {barangay, puroks, statistics} = barangays[barangayIndex]
-				for (const [index, purok] of puroks.entries()) {
-					console.log(purok.name)
-					sample += `<li>${purok.name}</li>`
-				}
-
-				document.getElementById('purok-list').innerHTML = sample
-			}
 		}
 
 		function addMapHoverOver() {
-				map.addEventListener('mouseover', function({target}) {
-				let data = getMapData(target) 
-				if(data) formatText(data)
-
-				// todo
+				map.addEventListener('mouseover', function({target: barangayNode}) {
+				const barangay = barangayNode.getAttribute('data-name') || undefined 
+				if(barangay) displayBarangayInfo(getBarangayInfo(barangay)) 
 			})
+		}
+
+		function placeMapMaker(barangayNode) {
+			// todo
+			const bbox = barangayNode.getBoundingClientRect()
+			var center = {
+				x: bbox.left + bbox.width,
+				y: bbox.top  + bbox.height,
+          	};
+
+			var svgimg = document.createElementNS('http://www.w3.org/2000/svg', 'image')
+			svgimg.setAttributeNS(null, 'height', 75)
+			svgimg.setAttributeNS(null, 'width', 75)
+			svgimg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '../image/mapFinder.png')
+			svgimg.setAttributeNS(null, 'x', center.x)
+			svgimg.setAttributeNS(null, 'y', center.y)
+			svgimg.setAttributeNS(null, 'visibility', 'visible')
+			svgimg.setAttributeNS(null, 'opacity', 0.9)
+			map.appendChild(svgimg)
+		}
+
+		function getBarangayInfo(barangayName) {
+			if(barangayName == undefined) return
+			return barangays.find(({barangay}) => barangay == barangayName) 
+		}
+
+		function displayBarangayInfo(barangayInfo) {
+			if(barangayInfo == undefined) return
+			const {barangay, totalPuroks, statistics} = barangayInfo
+			console.log(statistics) 
+		}
+
+		function displayPuroks(barangayInfo) {
+			if(barangayInfo == undefined) return
+			let sample = ''
+			const {barangay, puroks, statistics} = barangayInfo
+			for (const [index, purok] of puroks.entries()) {
+				sample += `<li>${purok.name}</li>`
+			}
+
+			document.getElementById('purok-list').innerHTML = sample
+			
 		}
 
 		function addMapHoverOut() {
-			map.addEventListener('mouseout', function({target}) {
-				target.style.stroke = '#aeaeaf'
-				target.style.strokeWidth = '1px'
-			})
-		}
-
-		function getMapData(target) {
-			if(target.getAttribute('data-name') == null) return
-
-			let data = {}
-			let stats = {}
-
-			data.barangay = target.getAttribute('data-name')
-			stats.red = parseInt(target.getAttribute('red')) || 0 
-			stats.yellow = parseInt(target.getAttribute('yellow')) || 0 
-			stats.green = parseInt(target.getAttribute('green')) || 0 
-			stats.blue = parseInt(target.getAttribute('blue')) || 0 
-			
-			data.stats = stats
-
-			return data
+			// map.addEventListener('mouseout', function({target}) {
+			// 	target.style.stroke = '#aeaeaf'
+			// 	target.style.strokeWidth = '1px'
+			// })
 		}
 
 		function formatText(data) {
+			// todo
 			const {barangay, stats} = data
 
 			const barangayText = document.getElementById('barangay-text')
@@ -182,6 +150,7 @@ function startMap() {
 		}
 
 		function addMapColorfilter() {
+			// todo
 			const checkNodes = Array.from(document.getElementsByClassName('filter-color'))
 			const option = {}
 
@@ -193,7 +162,8 @@ function startMap() {
 						if(node.checked) option[color] = true
 						else option[color] = false
 					})
-					setMapColor(barangays, option)
+					// setMapColor(barangays, option)
+					console.log(option)
 				})
 			})
 		}
@@ -207,10 +177,7 @@ function startMap() {
 				let key = event.key.toLowerCase()
 				let getMapLeftCord = util.returnOnlyNumbers(mapContainer.style.left) || 0
 				let getMapTopCord = util.returnOnlyNumbers(mapContainer.style.top) || 0 
-				const INCREASE = 20
-				const addMapBorders = {
-
-				}
+				const INCREASE = 50
 
 				if(key == 'a') {
 					moveLeft()
@@ -232,22 +199,22 @@ function startMap() {
 				}
 
 				function moveLeft() {
-					let newLeft = getMapLeftCord - INCREASE
-					mapContainer.style.left = newLeft + 'px'
-				}
-
-				function moveRight() {
 					let newLeft = getMapLeftCord + INCREASE
 					mapContainer.style.left = newLeft + 'px'
 				}
 
+				function moveRight() {
+					let newLeft = getMapLeftCord - INCREASE
+					mapContainer.style.left = newLeft + 'px'
+				}
+
 				function moveDown() {
-					let newTop = getMapTopCord + INCREASE
+					let newTop = getMapTopCord - INCREASE
 					mapContainer.style.top = newTop + 'px'
 				}
 
 				function moveTop() {
-					let newTop = getMapTopCord - INCREASE
+					let newTop = getMapTopCord + INCREASE
 					mapContainer.style.top = newTop + 'px'
 				}
 

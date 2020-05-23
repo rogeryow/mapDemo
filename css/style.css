@@ -39,6 +39,7 @@ body {
 
 #map-davao {
 	height: 600px;	
+    transition: all 0.1s ease-in-out 0s;
 }
 
 .hover {
@@ -63,4 +64,23 @@ path {
 	background-color: #fff;
 	padding: 10px;
 	top: 180px;
+}
+
+.cls-1, .cls-2{
+	fill:#fff;
+	stroke:skyblue;
+	fill-rule:evenodd;
+	stroke-width: 1.2px;
+}
+
+.cls-2{
+	stroke-miterlimit:10;
+}
+
+svg text {
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
