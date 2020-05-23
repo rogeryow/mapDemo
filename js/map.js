@@ -1,4 +1,34 @@
 import * as util from './util.js'
+const colors = {
+	red: [
+		'#FFD254',
+		'#FFB31F',
+		'#FF9102',
+		'#FE6800',
+		'#DC3F11',
+	],
+	yellow: [
+		'#FFF0A3',
+		'#FFE273',
+		'#FDD22F',
+		'#EBB323',
+		'#D9980D',
+	],
+	green: [
+		'#BDFFCF',
+		'#7EF7A0',
+		'#14DC71',
+		'#1BBD66',
+		'#17A258',
+	],
+	blue: [
+		'#9DF1FA',
+		'#27DBF5',
+		'#13B8E8',
+		'#0989C2',
+		'#17698E',
+	]
+}
 
 window.addEventListener('DOMContentLoaded', (event) => {
     startMap()
@@ -9,14 +39,14 @@ function test() {
 	console.log('test')
 }
 
+
 function startMap() {
 	const mapRoot = document.getElementById('map-root')
 	const mapContainer = document.getElementById('map')
 	const map = document.getElementById('map-davao')
 
 	util.XMLRequest('../data/json/digos.json')
-	.then((barangays) => {
-		// setMapAttribute(barangays)
+	.then(({barangays, info}) => {
 		setMapColor(barangays)
 		addMapClick()
 		addMapHoverOver()
@@ -33,44 +63,75 @@ function startMap() {
 					green: true, 
 					blue: true,
 					filter: 'total',
+					sequential: false,
+					colorIntensity: 4,
 				},
 				option
 			)
 
-			const {red, yellow, green, blue, filter} = option
+			let {
+				red, 
+				yellow, 
+				green, 
+				blue, 
+				filter, 
+				sequential, 
+				colorIntensity
+			} = option
 
-			for (const [index, {barangay, statistics}] of barangays.entries()) {
+			const {total} = info
 
+			for (let index = 0; index < barangays.length; index++) {
+				const {name, statistics} = barangays[index]
 				const filteredStat = {}
+				
 				if(red) filteredStat.red = statistics[filter].red
 				if(yellow) filteredStat.yellow = statistics[filter].yellow
 				if(green) filteredStat.green = statistics[filter].green
 				if(blue) filteredStat.blue = statistics[filter].blue
 
-				const getBarangayMaxStat = Object.keys(filteredStat).reduce((now, current) => filteredStat[now] > filteredStat[current] ? now : current )
-				fillColor(barangay, getBarangayMaxStat)
+				const getColor = Object.keys(filteredStat).reduce((now, current) => filteredStat[now] > filteredStat[current] ? now : current )
+				
+				if(sequential) {
+					const colorIntensityArray = splitNumberToArray(total[getColor])	
+					const colorStat = statistics[filter][getColor]
+					colorIntensity = getColorIntensity(colorStat, colorIntensityArray)
+				} 
+
+				fillColor(name, getColor, colorIntensity)
 			}
 		}
 
-		function fillColor(barangay, color) {
+		function fillColor(barangay, color, colorIntensity) {
 			const barangayNode = document.querySelector(`[data-name='${barangay}']`)
-
 			switch(color) {
-				case 'red': barangayNode.style.fill = '#ED5564'
+				case 'red': barangayNode.style.fill = colors.red[colorIntensity]
 					break
-				case 'yellow': barangayNode.style.fill = '#FFCE54'
+				case 'yellow': barangayNode.style.fill = colors.yellow[colorIntensity]
 					break
-				case 'green': barangayNode.style.fill = '#A0D568'
+				case 'green': barangayNode.style.fill = colors.green[colorIntensity]
 					break
-				case 'blue': barangayNode.style.fill = '#4FC1E8'
+				case 'blue': barangayNode.style.fill = colors.blue[colorIntensity]
 					break
 				default: barangayNode.style.fill = 'grey'
 			}
 		}
 
+		function getColorIntensity(number, array) {
+			let current = 0
+			let index = array.findIndex((value, index) => {
+				console.log(value)
+				if(number >= current && number < value ) {
+					return index
+				}
+				current = value
+			})
+			if(index == -1) index = 4
+			return index
+		}
+
 		function addMapClick() {
 			map.addEventListener('click', function({target: barangayNode}) {
-				console.log(barangayNode)
 				const barangay = barangayNode.getAttribute('data-name') || undefined
 				if(barangay) displayPuroks(getBarangayInfo(barangay))
 			})	
@@ -104,19 +165,21 @@ function startMap() {
 
 		function getBarangayInfo(barangayName) {
 			if(barangayName == undefined) return
-			return barangays.find(({barangay}) => barangay == barangayName) 
+			return barangays.find(({name}) => name == barangayName)
 		}
 
 		function displayBarangayInfo(barangayInfo) {
+			// todo			
 			if(barangayInfo == undefined) return
 			const {barangay, totalPuroks, statistics} = barangayInfo
-			console.log(statistics) 
 		}
 
 		function displayPuroks(barangayInfo) {
+			// todo
 			if(barangayInfo == undefined) return
 			let sample = ''
-			const {barangay, puroks, statistics} = barangayInfo
+
+			const {name, puroks, statistics} = barangayInfo
 			for (const [index, purok] of puroks.entries()) {
 				sample += `<li>${purok.name}</li>`
 			}
@@ -134,38 +197,55 @@ function startMap() {
 
 		function formatText(data) {
 			// todo
-			const {barangay, stats} = data
+			// const {barangay, stats} = data
 
-			const barangayText = document.getElementById('barangay-text')
-			const redText = document.getElementById('red-text')
-			const yellowText = document.getElementById('yellow-text')
-			const greenText = document.getElementById('green-text')
-			const blueText = document.getElementById('blue-text')
+			// const barangayText = document.getElementById('barangay-text')
+			// const redText = document.getElementById('red-text')
+			// const yellowText = document.getElementById('yellow-text')
+			// const greenText = document.getElementById('green-text')
+			// const blueText = document.getElementById('blue-text')
 
-			barangayText.innerHTML = barangay
-			redText.innerHTML = stats.red
-			yellowText.innerHTML = stats.yellow
-			greenText.innerHTML = stats.green
-			blueText.innerHTML = stats.blue
+			// barangayText.innerHTML = barangay
+			// redText.innerHTML = stats.red
+			// yellowText.innerHTML = stats.yellow
+			// greenText.innerHTML = stats.green
+			// blueText.innerHTML = stats.blue
 		}
 
 		function addMapColorfilter() {
 			// todo
-			const checkNodes = Array.from(document.getElementsByClassName('filter-color'))
-			const option = {}
+			const colorFilterNodes = Array.from(document.getElementsByClassName('filter-color'))
 
-			checkNodes.forEach((node) => {
+			colorFilterNodes.forEach((node) => {
 				node.addEventListener('click', function() {
-					console.log('clicked')
-					checkNodes.map((node) => {
-						let color = node.getAttribute('color')
-						if(node.checked) option[color] = true
-						else option[color] = false
-					})
-					// setMapColor(barangays, option)
-					console.log(option)
+					if(node.hasAttribute('color')) {
+						const color = node.getAttribute('color')
+						const option = Object.assign(
+							{
+								red: false, 
+								yellow: false, 
+								green: false, 
+								blue: false,
+								sequential: true, 
+							}
+						)
+
+						option[color] = true
+						setMapColor(barangays, option)
+					} else setMapColor(barangays)
 				})
 			})
+		}
+
+		function splitNumberToArray(number) {
+			const sequence = []
+			const startNumber = number/5
+			
+			for (let index = 1; index <= 5; index++) {
+				sequence.push(startNumber * index)
+			}
+			
+			return sequence
 		}
 
 		function addMapZoom() {

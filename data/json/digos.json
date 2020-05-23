@@ -1,445 +1,464 @@
-[
+{
+	"info": 
 	{
-		"barangay": "kapatagan",
-		"totalPuroks": 2,
-		"statistics": {
-			"total": {
-				"red": 20000,
-				"yellow": 22000,
-				"green": 123123222050,
-				"blue": 5521401				
-			},
-			"members": {
-				"red": 5000,
-				"yellow": 12000,
-				"green": 22050,
-				"blue": 5401	
-			},
-			"nonMembers":{
-				"red": 1111000,
-				"yellow": 2000,
-				"green": 42050,
-				"blue": 6401	
-			}
-
-		},
-		"puroks": [
-			{
-				"name": "Balili",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-				
-			},
-			{
-				"name": "suso",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-			}
-		]
+		"total": 
+		{
+			"red": 5000,
+			"yellow": 5000,
+			"green": 5000,
+			"blue": 5000
+		}
 	},
-	{
-		"barangay": "soong",
-		"totalPuroks": 5,
-		"statistics": {
-			"total": {
-				"red": 5100,
-				"yellow": 100,
-				"green": 150,
-				"blue": 1401				
-			},
-			"members": {
-				"red": 5000,
-				"yellow": 12000,
-				"green": 22050,
-				"blue": 5401	
-			},
-			"nonMembers":{
-				"red": 1111000,
-				"yellow": 2000,
-				"green": 42050,
-				"blue": 6401	
-			}
 
-		},
-		"puroks": [
-			{
-				"name": "Balili",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
+	"barangays": 
+	[
+		{
+			"name": "kapatagan",
+			"totalPuroks": 2,
+			"statistics": {
+				"total": {
+					"red": 1000,
+					"yellow": 2000,
+					"green": 5000,
+					"blue": 4000				
+				},
+				"members": {
+					"red": 5000,
+					"yellow": 1200,
+					"green": 2200,
+					"blue": 5400	
+				},
+				"nonMembers":{
+					"red": 5000,
+					"yellow": 2000,
+					"green": 4000,
+					"blue": 6000	
 				}
-				
-			},
-			{
-				"name": "suso",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-			}
-		]
-	},
-	{
-		"barangay": "binaton",
-		"totalPuroks": 5,
-		"statistics": {
-			"total": {
-				"red": 5100,
-				"yellow": 20100,
-				"green": 150,
-				"blue": 1401				
-			},
-			"members": {
-				"red": 5000,
-				"yellow": 12000,
-				"green": 22050,
-				"blue": 5401	
-			},
-			"nonMembers":{
-				"red": 1111000,
-				"yellow": 2000,
-				"green": 42050,
-				"blue": 6401	
-			}
 
+			},
+			"puroks": [
+				{
+					"name": "Balili",
+					"statistics": {
+						"total": {
+							"red": 5000,
+							"yellow": 2500,
+							"green": 2000,
+							"blue": 2200 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+					
+				},
+				{
+					"name": "suso",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+				}
+			]
 		},
-		"puroks": [
-			{
-				"name": "balili",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-				
-			},
-			{
-				"name": "suso",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-			}
-		]
-	},
-	{
-		"barangay": "dulangan",
-		"totalPuroks": 5,
-		"statistics": {
-			"total": {
-				"red": 5100,
-				"yellow": 1010,
-				"green": 21150,
-				"blue": 1401				
-			},
-			"members": {
-				"red": 5000,
-				"yellow": 12000,
-				"green": 22050,
-				"blue": 5401	
-			},
-			"nonMembers":{
-				"red": 1111000,
-				"yellow": 2000,
-				"green": 42050,
-				"blue": 6401	
-			}
 
-		},
-		"puroks": [
-			{
-				"name": "dulangan",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
+		{
+			"name": "soong",
+			"totalPuroks": 5,
+			"statistics": {
+				"total": {
+					"red": 2000,
+					"yellow": 2100,
+					"green": 5150,
+					"blue": 3401				
+				},
+				"members": {
+					"red": 5000,
+					"yellow": 12000,
+					"green": 22050,
+					"blue": 5401	
+				},
+				"nonMembers":{
+					"red": 1111000,
+					"yellow": 2000,
+					"green": 42050,
+					"blue": 6401	
 				}
-				
-			},
-			{
-				"name": "suso",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-			}
-		]
-	},
-	{
-		"barangay": "soong",
-		"totalPuroks": 5,
-		"statistics": {
-			"total": {
-				"red": 5100,
-				"yellow": 100,
-				"green": 150,
-				"blue": 1401				
-			},
-			"members": {
-				"red": 5000,
-				"yellow": 12000,
-				"green": 22050,
-				"blue": 5401	
-			},
-			"nonMembers":{
-				"red": 1111000,
-				"yellow": 2000,
-				"green": 42050,
-				"blue": 6401	
-			}
 
+			},
+			"puroks": [
+				{
+					"name": "Balili",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+					
+				},
+				{
+					"name": "suso",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+				}
+			]
 		},
-		"puroks": [
-			{
-				"name": "Balili",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-				
-			},
-			{
-				"name": "suso",
-				"statistics": {
-					"total": {
-						"red": 4110,
-						"yellow": 2200,
-						"green": 22250,
-						"blue": 2141 
-					},
-					"members:": {
-						"red": 2110,
-						"yellow": 3200,
-						"green": 5250,
-						"blue": 1141
-					},
-					"nonMembers":{
-						"red": 6000,
-						"yellow": 2000,
-						"green": 42050,
-						"blue": 6401	
-					}
-				}
-			}
-		]
-	},
-	{
-		"barangay": "aplaya",
-		"totalPuroks": 3,
-		"statistics": {
-			"total": {
-				"red": 20000,
-				"yellow": 22000,
-				"green": 122050,
-				"blue": 21401				
-			},
-			"members": {
-				"red": 4000,
-				"yellow": 42000,
-				"green": 62050,
-				"blue": 55401	
-			},
-			"nonMembers":{
-				"red": 7000,
-				"yellow": 4000,
-				"green": 42050,
-				"blue": 6401	
-			}
 
-		},
-		"puroks": [
-			{
-				"name": "butadon",
-				"statistics": {
-					"total": {
-						"red": 120000,
-						"yellow": 32000,
-						"green": 422050,
-						"blue": 51401				
-					},
-					"members": {
-						"red": 6000,
-						"yellow": 32000,
-						"green": 62050,
-						"blue": 55401	
-					},
-					"nonMembers":{
-						"red": 2000,
-						"yellow": 2000,
-						"green": 52050,
-						"blue": 2401	
-					}
+		{
+			"name": "binaton",
+			"totalPuroks": 5,
+			"statistics": {
+				"total": {
+					"red": 3100,
+					"yellow": 2100,
+					"green": 3150,
+					"blue": 2401				
+				},
+				"members": {
+					"red": 5000,
+					"yellow": 12000,
+					"green": 22050,
+					"blue": 5401	
+				},
+				"nonMembers":{
+					"red": 1111000,
+					"yellow": 2000,
+					"green": 42050,
+					"blue": 6401	
 				}
+
 			},
-			{
-				"name": "malinas",
-				"statistics": {
-					"total": {
-						"red": 320000,
-						"yellow": 52000,
-						"green": 222050,
-						"blue": 21401				
-					},
-					"members": {
-						"red": 6000,
-						"yellow": 92000,
-						"green": 22050,
-						"blue": 15401	
-					},
-					"nonMembers":{
-						"red": 2000,
-						"yellow": 22000,
-						"green": 552050,
-						"blue": 32401	
+			"puroks": [
+				{
+					"name": "balili",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+					
+				},
+				{
+					"name": "suso",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
 					}
 				}
-			}
-		]
-	}
-]
+			]
+		},
+
+		{
+			"name": "dulangan",
+			"totalPuroks": 5,
+			"statistics": {
+				"total": {
+					"red": 5160,
+					"yellow": 4010,
+					"green": 5100,
+					"blue": 3401				
+				},
+				"members": {
+					"red": 5000,
+					"yellow": 12000,
+					"green": 22050,
+					"blue": 5401	
+				},
+				"nonMembers":{
+					"red": 1111000,
+					"yellow": 2000,
+					"green": 42050,
+					"blue": 6401	
+				}
+
+			},
+			"puroks": [
+				{
+					"name": "dulangan",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+					
+				},
+				{
+					"name": "suso",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+				}
+			]
+		},
+
+		{
+			"name": "soong",
+			"totalPuroks": 5,
+			"statistics": {
+				"total": {
+					"red": 5150,
+					"yellow": 2100,
+					"green": 5150,
+					"blue": 4401				
+				},
+				"members": {
+					"red": 5000,
+					"yellow": 12000,
+					"green": 22050,
+					"blue": 5401	
+				},
+				"nonMembers":{
+					"red": 1111000,
+					"yellow": 2000,
+					"green": 42050,
+					"blue": 6401	
+				}
+
+			},
+			"puroks": [
+				{
+					"name": "Balili",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+					
+				},
+				{
+					"name": "suso",
+					"statistics": {
+						"total": {
+							"red": 4110,
+							"yellow": 2200,
+							"green": 22250,
+							"blue": 2141 
+						},
+						"members:": {
+							"red": 2110,
+							"yellow": 3200,
+							"green": 5250,
+							"blue": 1141
+						},
+						"nonMembers":{
+							"red": 6000,
+							"yellow": 2000,
+							"green": 42050,
+							"blue": 6401	
+						}
+					}
+				}
+			]
+		},
+
+		{
+			"name": "aplaya",
+			"totalPuroks": 3,
+			"statistics": {
+				"total": {
+					"red": 4000,
+					"yellow": 2200,
+					"green": 1050,
+					"blue": 4401				
+				},
+				"members": {
+					"red": 4000,
+					"yellow": 42000,
+					"green": 62050,
+					"blue": 55401	
+				},
+				"nonMembers":{
+					"red": 7000,
+					"yellow": 4000,
+					"green": 42050,
+					"blue": 6401	
+				}
+
+			},
+			"puroks": [
+				{
+					"name": "butadon",
+					"statistics": {
+						"total": {
+							"red": 120000,
+							"yellow": 32000,
+							"green": 422050,
+							"blue": 51401				
+						},
+						"members": {
+							"red": 6000,
+							"yellow": 32000,
+							"green": 62050,
+							"blue": 55401	
+						},
+						"nonMembers":{
+							"red": 2000,
+							"yellow": 2000,
+							"green": 52050,
+							"blue": 2401	
+						}
+					}
+				},
+				{
+					"name": "malinas",
+					"statistics": {
+						"total": {
+							"red": 320000,
+							"yellow": 52000,
+							"green": 222050,
+							"blue": 21401				
+						},
+						"members": {
+							"red": 6000,
+							"yellow": 92000,
+							"green": 22050,
+							"blue": 15401	
+						},
+						"nonMembers":{
+							"red": 2000,
+							"yellow": 22000,
+							"green": 552050,
+							"blue": 32401	
+						}
+					}
+				}
+			]
+		}
+	]
+}
