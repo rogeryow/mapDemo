@@ -24,7 +24,7 @@ body {
 }
 
 #map-sidebar {
-	float: left;
+	float: right;
 	background-color: #fff;
 	width: 25%;
 	height: 100%;
@@ -39,14 +39,11 @@ body {
 
 #map-davao {
 	height: 600px;	
+	position: relative;
 }
 
 .hover {
 	background-color: #FF9800;
-}
-
-path {
-	cursor: pointer;
 }
 
 .stat-box {
@@ -63,6 +60,14 @@ path {
 	background-color: #fff;
 	padding: 10px;
 	top: 180px;
+}
+
+.filter-position-box {
+	position: absolute;
+	top: 250px;
+	left: 10px;
+	background-color: #fff;
+	width: 200px;
 }
 
 .cls-1, .cls-2{
@@ -88,3 +93,4 @@ svg text {
 svg path {
 	transition: all 0.2s ease-in-out 0s;
 }
+

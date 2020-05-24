@@ -44,6 +44,7 @@ function startMap() {
 	const mapRoot = document.getElementById('map-root')
 	const mapContainer = document.getElementById('map')
 	const map = document.getElementById('map-davao')
+	let filter = {}
 
 	util.XMLRequest('../data/json/digos.json')
 	.then(({barangays, info}) => {
@@ -54,16 +55,18 @@ function startMap() {
 		addMapColorfilter()
 		addMapKeyEvents()
 		addMapZoom()
+		addMapPositionFilter()
 		moveMap()
 
 		function setMapColor(barangays, option) {
+			console.log(filter)
 			option = Object.assign(
 				{
 					red: true, 
 					yellow: true, 
 					green: true, 
 					blue: true,
-					filter: 'total',
+					position: 'total',
 					sequential: false,
 					colorIntensity: 4,
 				},
@@ -75,7 +78,7 @@ function startMap() {
 				yellow, 
 				green, 
 				blue, 
-				filter, 
+				position, 
 				sequential, 
 				colorIntensity
 			} = option
@@ -86,17 +89,17 @@ function startMap() {
 				const {name, statistics} = barangays[index]
 				const filteredStat = {}
 				
-				if(red) filteredStat.red = statistics[filter].red
-				if(yellow) filteredStat.yellow = statistics[filter].yellow
-				if(green) filteredStat.green = statistics[filter].green
-				if(blue) filteredStat.blue = statistics[filter].blue
+				if(red) filteredStat.red = statistics[position].red
+				if(yellow) filteredStat.yellow = statistics[position].yellow
+				if(green) filteredStat.green = statistics[position].green
+				if(blue) filteredStat.blue = statistics[position].blue
 
 				const getColor = Object.keys(filteredStat).reduce((now, current) => filteredStat[now] > filteredStat[current] ? now : current )
 				
 				if(sequential) {
-					const colorIntensityArray = splitNumberToArray(total[getColor])	
-					const colorStat = statistics[filter][getColor]
-					colorIntensity = getColorIntensity(colorStat, colorIntensityArray)
+					const statArray = splitNumberToArray(total[getColor])	
+					const colorStat = statistics[position][getColor]
+					colorIntensity = getColorIntensity(colorStat, statArray)
 				} 
 
 				fillColor(name, getColor, colorIntensity)
@@ -105,33 +108,22 @@ function startMap() {
 
 		function fillColor(barangay, color, colorIntensity) {
 			const barangayNode = document.querySelector(`[data-name='${barangay}']`)
-			switch(color) {
-				case 'red': barangayNode.style.fill = colors.red[colorIntensity]
-					break
-				case 'yellow': barangayNode.style.fill = colors.yellow[colorIntensity]
-					break
-				case 'green': barangayNode.style.fill = colors.green[colorIntensity]
-					break
-				case 'blue': barangayNode.style.fill = colors.blue[colorIntensity]
-					break
-				default: barangayNode.style.fill = 'grey'
-			}
+			barangayNode.style.fill = colors[color][colorIntensity]
 		}
 
 		function getColorIntensity(number, array) {
 			let current = 0
 			let index = array.findIndex((value, index) => {
-				console.log(value)
-				if(number >= current && number < value ) {
-					return index
-				}
+				if(number >= current && number < value ) return index
 				current = value
 			})
+
 			if(index == -1) index = 4
 			return index
 		}
 
 		function addMapClick() {
+			// todo
 			map.addEventListener('click', function({target: barangayNode}) {
 				const barangay = barangayNode.getAttribute('data-name') || undefined
 				if(barangay) displayPuroks(getBarangayInfo(barangay))
@@ -139,6 +131,7 @@ function startMap() {
 		}
 
 		function addMapHoverOver() {
+			// todo
 				map.addEventListener('mouseover', function({target: barangayNode}) {
 				const barangay = barangayNode.getAttribute('data-name') || undefined 
 				if(barangay) displayBarangayInfo(getBarangayInfo(barangay)) 
@@ -214,26 +207,43 @@ function startMap() {
 		}
 
 		function addMapColorfilter() {
-			// todo
 			const colorFilterNodes = Array.from(document.getElementsByClassName('filter-color'))
 
 			colorFilterNodes.forEach((node) => {
 				node.addEventListener('click', function() {
 					if(node.hasAttribute('color')) {
 						const color = node.getAttribute('color')
-						const option = Object.assign(
-							{
-								red: false, 
-								yellow: false, 
-								green: false, 
-								blue: false,
-								sequential: true, 
-							}
-						)
+						filter.red = false
+						filter.yellow = false 
+						filter.green = false 
+						filter.blue = false
+						filter.sequential = true
 
-						option[color] = true
-						setMapColor(barangays, option)
-					} else setMapColor(barangays)
+						filter[color] = true
+						setMapColor(barangays, filter)
+					} else {
+						filter.red = true
+						filter.yellow = true 
+						filter.green = true 
+						filter.blue = true
+						filter.sequential = false
+						setMapColor(barangays, filter)
+					}
+				})
+			})
+		}
+
+		function addMapPositionFilter() {
+			const positionFilterNodes = Array.from(
+				document.getElementsByClassName('filter-position'))
+
+			positionFilterNodes.forEach((node) => {
+				node.addEventListener('click', function() {
+					if(node.hasAttribute('position')) {
+						const position = node.getAttribute('position')
+						filter.position = position
+						setMapColor(barangays, filter)
+					}
 				})
 			})
 		}
@@ -313,7 +323,11 @@ function startMap() {
 		}
 
 		function moveMap() {
-			$( "#map-davao" ).draggable()
+			$('#map-davao').draggable({ 
+				scroll: true, 
+				scrollSensitivity: 100,
+				cursor: 'move',
+			})
 		}
 
 	})
