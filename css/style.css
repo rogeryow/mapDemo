@@ -39,7 +39,6 @@ body {
 
 #map-davao {
 	height: 600px;	
-    transition: all 0.1s ease-in-out 0s;
 }
 
 .hover {
