@@ -54,7 +54,8 @@ function startMap() {
 		addMapColorfilter()
 		addMapKeyEvents()
 		addMapZoom()
-		
+		moveMap()
+
 		function setMapColor(barangays, option) {
 			option = Object.assign(
 				{
@@ -309,6 +310,10 @@ function startMap() {
 				}
 
 			})
+		}
+
+		function moveMap() {
+			$( "#map-davao" ).draggable()
 		}
 
 	})
