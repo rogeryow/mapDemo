@@ -25,9 +25,10 @@ body {
 
 #map-sidebar {
 	float: right;
-	background-color: #fff;
+	background-color: #F5F5F5;
 	width: 25%;
 	height: 100%;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #map-content {
@@ -94,3 +95,6 @@ svg path {
 	transition: all 0.2s ease-in-out 0s;
 }
 
+#purok-list {
+	background-color: #ffffff;
+}
