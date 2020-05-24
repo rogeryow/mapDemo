@@ -68,7 +68,7 @@ function startMap() {
 					blue: true,
 					position: 'total',
 					sequential: false,
-					colorIntensity: 4,
+					colorIntensity: 2,
 				},
 				option
 			)
